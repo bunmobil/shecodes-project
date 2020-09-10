@@ -83,3 +83,8 @@ input[type="submit"] {
 .weektemp {
   color: #e4487f;
 }
+.footer {
+  text-align: center;
+  padding-top: 300px;
+  color: blueviolet;
+}
