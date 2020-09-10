@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Weather</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Today's Date, 2020</h1>
+
+      <form id="city-form">
+        <input type="text" placeholder="Enter Your City" id="text-input" />
+        <input type="submit" value="Enter" />
+        <button class="pin">📌</button>
+      </form>
+
+      <h2>Weather in <span class="city"> Dartmouth</span></h2>
+      <div class="row">
+        <div class="col-6">
+          <div class="card big">
+            <div class="card-block">
+              <h4 class="card-title">Today</h4>
+              <p class="card-text"><span class="temp">22°C</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card big">
+            <div class="card-block">
+              <h4 class="card-title"></h4>
+              <p class="card-text">
+                <img alt="sunandcloud" src="images/sunncloud.png" />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-sm">
+          <div class="card small" style="width: 18rem">
+            <img
+              src="images/lilrainy.png"
+              class="card-img-top"
+              alt="catrainy"
+            />
+            <div class="card-body">
+              <p class="card-text">Fri <span class="weektemp">24°C</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card small" style="width: 18rem">
+            <img
+              src="images/lilsuncloud.png"
+              class="card-img-top"
+              alt="catsunandcloud"
+            />
+            <div class="card-body">
+              <p class="card-text">Sat <span class="weektemp">28°C</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card small" style="width: 18rem">
+            <img
+              src="images/lilsunny.png"
+              class="card-img-top"
+              alt="catsunny"
+            />
+            <div class="card-body">
+              <p class="card-text">Sun <span class="weektemp">27°C</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card small" style="width: 18rem">
+            <img
+              src="images/lilsuncloud.png"
+              class="card-img-top"
+              alt="catsunandcloud"
+            />
+            <div class="card-body">
+              <p class="card-text">Mon <span class="weektemp">24°C</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card small" style="width: 18rem">
+            <img
+              src="images/lilsunny.png"
+              class="card-img-top"
+              alt="catsunny"
+            />
+            <div class="card-body">
+              <p class="card-text">Tue <span class="weektemp">26°C</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
