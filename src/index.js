@@ -1,3 +1,5 @@
+// for displaying date & time...
+
 let date = new Date();
 
 let days = [
@@ -12,9 +14,14 @@ let days = [
 let day = days[date.getDay()];
 let hours = date.getHours();
 let minutes = date.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 
 let h1 = document.querySelector("h1");
 h1.innerHTML = `${day} ${hours}:${minutes}`;
+
+// for displaying city name and retrieving for search...
 
 function citySearch(event) {
   event.preventDefault();
@@ -30,13 +37,28 @@ function citySearch(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+// for displaying city temperature...
+
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let newTemp = document.querySelector(".temp");
+  let descript = document.querySelector("#descript");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind");
+  let icon = document.querySelector("#icon");
+  descript.innerHTML = `Weather: ${response.data.weather[0].description}`;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  windSpeed.innerHTML = `Windspeed: ${response.data.wind.speed}km/h`;
   newTemp.innerHTML = `${temperature} °C`;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+  );
 }
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", citySearch);
+
+// for using geolocation to obtain city...
 
 function longLat(position) {
   let lat = position.coords.latitude;
@@ -54,5 +76,8 @@ function changeCity(response) {
   newPlace.innerHTML = city;
   return response;
 }
+
+// geolaction button function...
+
 let pinButton = document.querySelector(".pin");
 pinButton.addEventListener("click", geoTemp);
