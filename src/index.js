@@ -77,7 +77,34 @@ function changeCity(response) {
   return response;
 }
 
-// geolaction button function...
+// geolocation button function...
 
 let pinButton = document.querySelector(".pin");
 pinButton.addEventListener("click", geoTemp);
+
+// change between celcius & far
+
+function switchFar(event) {
+  event.preventDefault();
+  let normTemp = document.querySelector("#temp");
+  if (normTemp.innerHTML.includes("°F")) {
+    return;
+  }
+  let farTemp = (parseInt(normTemp.innerHTML) * 9) / 5 + 32;
+  normTemp.innerHTML = `${Math.round(farTemp)}°F`;
+}
+function switchCel(event) {
+  event.preventDefault();
+  let normTemp = document.querySelector("#temp");
+  if (normTemp.innerHTML.includes("°C")) {
+    return;
+  }
+  let celTemp = ((parseInt(normTemp.innerHTML) - 32) * 5) / 9;
+  normTemp.innerHTML = `${Math.round(celTemp)}°C `;
+}
+
+let far = document.querySelector("#far");
+far.addEventListener("click", switchFar);
+
+let cel = document.querySelector("#cel");
+cel.addEventListener("click", switchCel);
