@@ -33,28 +33,69 @@ function citySearch(event) {
   }
   h2.innerHTML = `${city}`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=630544eeb9009e9606d92c6646dd2297&units=metric`;
-
   axios.get(apiUrl).then(showTemperature);
+  let apiHourly = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=630544eeb9009e9606d92c6646dd2297&units=metric`;
+  axios.get(apiHourly).then(showTemperature);
 }
 
 // for displaying city temperature...
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let newTemp = document.querySelector(".temp");
-  let descript = document.querySelector("#descript");
-  let humidity = document.querySelector("#humidity");
-  let windSpeed = document.querySelector("#wind");
-  let icon = document.querySelector("#icon");
-  descript.innerHTML = `Weather: ${response.data.weather[0].description}`;
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  windSpeed.innerHTML = `Windspeed: ${response.data.wind.speed}km/h`;
-  newTemp.innerHTML = `${temperature} °C`;
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
-  );
+  if (Array.isArray(response.data.list)) {
+    let smone = document.querySelector("#smone");
+    let smtwo = document.querySelector("#smtwo");
+    let smthree = document.querySelector("#smthree");
+    let smfour = document.querySelector("#smfour");
+    let smfive = document.querySelector("#smfive");
+    smone.innerHTML = `${Math.round(response.data.list[0].main.temp)}°C`;
+    smtwo.innerHTML = `${Math.round(response.data.list[1].main.temp)}°C`;
+    smthree.innerHTML = `${Math.round(response.data.list[2].main.temp)}°C`;
+    smfour.innerHTML = `${Math.round(response.data.list[3].main.temp)}°C`;
+    smfive.innerHTML = `${Math.round(response.data.list[4].main.temp)}°C`;
+
+    let smIconOne = document.querySelector("#smIconOne");
+    let smIconTwo = document.querySelector("#smIconTwo");
+    let smIconThree = document.querySelector("#smIconThree");
+    let smIconFour = document.querySelector("#smIconFour");
+    let smIconFive = document.querySelector("#smIconFive");
+    smIconOne.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@4x.png`
+    );
+    smIconTwo.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@4x.png`
+    );
+    smIconThree.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@4x.png`
+    );
+    smIconFour.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@4x.png`
+    );
+    smIconFive.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.list[4].weather[0].icon}@4x.png`
+    );
+  } else {
+    let temperature = Math.round(response.data.main.temp);
+    let newTemp = document.querySelector(".temp");
+    let descript = document.querySelector("#descript");
+    let humidity = document.querySelector("#humidity");
+    let windSpeed = document.querySelector("#wind");
+    let icon = document.querySelector("#icon");
+    descript.innerHTML = `Weather: ${response.data.weather[0].description}`;
+    humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+    windSpeed.innerHTML = `Windspeed: ${response.data.wind.speed}km/h`;
+    newTemp.innerHTML = `${temperature} °C`;
+    icon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+    );
+  }
 }
+
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", citySearch);
 

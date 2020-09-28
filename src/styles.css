@@ -73,6 +73,7 @@ input[type="submit"] {
 }
 .footer {
   color: purple;
+  font-size: 11x;
 }
 .backer {
   border: 2px solid #cdb2d6;
