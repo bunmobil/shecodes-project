@@ -78,7 +78,7 @@ function showTemperature(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.list[4].weather[0].icon}@4x.png`
     );
-  } else {
+  } else if (response.data.main) {
     let temperature = Math.round(response.data.main.temp);
     let newTemp = document.querySelector(".temp");
     let descript = document.querySelector("#descript");
@@ -93,6 +93,8 @@ function showTemperature(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
     );
+  } else {
+    alert("eereeeeeeeeeeeeeee");
   }
 }
 
