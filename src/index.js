@@ -60,23 +60,23 @@ function showTemperature(response) {
     let smIconFive = document.querySelector("#smIconFive");
     smIconOne.setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@4x.png`
+      `https://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@4x.png`
     );
     smIconTwo.setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@4x.png`
+      `https://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@4x.png`
     );
     smIconThree.setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@4x.png`
+      `https://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@4x.png`
     );
     smIconFour.setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@4x.png`
+      `https://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@4x.png`
     );
     smIconFive.setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.list[4].weather[0].icon}@4x.png`
+      `https://openweathermap.org/img/wn/${response.data.list[4].weather[0].icon}@4x.png`
     );
   } else if (response.data.main) {
     let temperature = Math.round(response.data.main.temp);
@@ -91,7 +91,7 @@ function showTemperature(response) {
     newTemp.innerHTML = `${temperature} °C`;
     icon.setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
     );
   } else {
     alert("eereeeeeeeeeeeeeee");
@@ -106,7 +106,7 @@ form.addEventListener("submit", citySearch);
 function longLat(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=630544eeb9009e9606d92c6646dd2297&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=630544eeb9009e9606d92c6646dd2297&units=metric`;
 
   axios.get(apiUrl).then(changeCity).then(showTemperature);
 }
