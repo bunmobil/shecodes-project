@@ -106,7 +106,7 @@ form.addEventListener("submit", citySearch);
 function longLat(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=630544eeb9009e9606d92c6646dd2297&units=metric`;
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=630544eeb9009e9606d92c6646dd2297&units=metric`;
 
   axios.get(apiUrl).then(changeCity).then(showTemperature);
 }
